@@ -1,29 +1,141 @@
 <!-- SIGN UP PHP -->
 
-<!-- Includes - Navigation Bar -->
+<!-- Includes - HTML head -->
 <?php
-    include 'includes/nav.php';
+
+    include 'includes/head.html';
+
+    if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
+        # Connect to the database.
+        require ('connections/connect_db.php'); 
+
+        # Initialize an error array.
+        $errors = array();
+
+        # Check for the first name.
+        if ( empty( $_POST[ 'firstName' ] ) ){
+            $errors[] = 'Enter your first name.' ;
+        }
+        else {
+            $fn = mysqli_real_escape_string( $link, trim( $_POST[ 'firstName' ] ) ) ;
+        }
+
+        # Check for the last name.
+        if ( empty( $_POST[ 'lastName' ] ) ){
+            $errors[] = 'Enter your last name.' ;
+        }
+        else {
+            $ln = mysqli_real_escape_string( $link, trim( $_POST[ 'lastName' ] ) ) ;
+        }
+
+        # Check for the nickname.
+        if ( empty( $_POST[ 'nickname' ] ) ){
+            $errors[] = 'Enter your nickname.' ;
+        }
+        else {
+            $nk = mysqli_real_escape_string( $link, trim( $_POST[ 'nickname' ] ) ) ;
+        }
+
+        # Check for the email.
+        if ( empty( $_POST[ 'email' ] ) ){
+            $errors[] = 'Enter your email.' ;
+        }
+        else {
+            $e = mysqli_real_escape_string( $link, trim( $_POST[ 'email' ] ) );
+        }
+
+        # Check for a password and matching input passwords.
+        if ( !empty($_POST[ 'pass1' ] ) ) {
+            if ( $_POST[ 'pass1' ] != $_POST[ 'pass2' ] ) { 
+                $errors[] = 'Passwords do not match. Please, check your password!' ;
+            } else { 
+                $p = mysqli_real_escape_string( $link, trim( $_POST[ 'pass1' ] ) ); 
+            }
+        } else { 
+            $errors[] = 'Enter your password.'; 
+        }
+
+        # Check if email address already registered.
+        if ( empty( $errors ) ) {
+            $q = "SELECT user_id FROM view_users WHERE email='$e'" ;
+            $r = @mysqli_query ( $link, $q ) ;
+
+            if (mysqli_num_rows( $r ) != 0){
+                $errors[] = 'Email address already registered!' ;
+            }  
+        }
+
+        # Create a new user in the db
+        if ( empty( $errors ) ) {
+
+            $q = "INSERT INTO view_users (first_name, last_name, nickname, email, role_id, pass, payment_id, reg_date) 
+	            VALUES ('$fn', '$ln', '$nk', '$e', 2, '$p', 0, NOW() )";
+            
+            $r = @mysqli_query ( $link, $q ) ;
+            if ($r) { 
+
+                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        You are now registered. Please go to <a class="alert-link" href="login.php">Log In</a>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button></div>';
+
+                # Close database connection.
+                mysqli_close($link); 
+            } else {
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        We could not registered you. Please try again!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button></div>';
+                # Close database connection.
+                mysqli_close( $link );
+            }
+        } else {
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert"><h5 class="alert-heading" id="err_msg">The following errors occurred:</h5>';
+            foreach ( $errors as $msg )
+            { echo " - $msg<br>" ; }
+            echo 'Please try again or <a class="alert-link" href="login.php">Log In</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button></div>';
+            
+            # Close database connection.
+            mysqli_close( $link );
+        }  
+    }
 ?>
 
-<!-- Connections - CodeSpace DB -->
-<?php
-    # Open database connection.
-	require ( 'connections/connect_db.php' );
-?>
-
-<!-- Container -->
+<!-- Container - Form for Sign Up -->
 <div class = "signup-container">
-    <form action = "<?php echo $_SERVER['PHP_SELF']; ?>" method = "POST" class = "signup">
-        <div class = "signup-title">
+    <div class = "signup-left"> 
+        <div class = "signup-left-title">
             <h2>Sign Up</h2>
             <hr>
         </div>
-        <input type = "text" name = "username" placeholder = "Enter Your Username" class = "signup-inputs" required>
-        <input type = "email" name = "email" placeholder = "Enter Your Email" class = "signup-inputs" required>
-        <input type = "password" name = "pwd" placeholder = "Enter Your Password" class = "signup-inputs" required>
-        <input type = "password" name = "pwd1" placeholder = "Repeat Your Password" class = "signup-inputs" required>
-        <button type = "submit">Sign Up</button>
+        <img src = "assets/signup.png" alt = "sign up left image">
+    </div>  
+    <form action = "signup.php" method = "POST" class = "signup-right">
+
+        <label for = "fName">First Name:</label>
+        <input type = "text" name = "firstName" placeholder = "Enter Your First Name" class = "signup-inputs" required
+                value="<?php if (isset($_POST['firstName'])) echo $_POST['firstName']; ?>">
+        <label for = "lName">Last Name:</label>
+        <input type = "text" name = "lastName" placeholder = "Enter Your Last Name" class = "signup-inputs" required
+                value="<?php if (isset($_POST['lastName'])) echo $_POST['lastName']; ?>">
+        <label for = "nick">Nickname:</label>
+        <input type = "text" name = "nickname" placeholder = "Enter Your Nickname" class = "signup-inputs" required
+                value="<?php if (isset($_POST['nickname'])) echo $_POST['nickname']; ?>">
+        <label for = "eml">Email:</label>
+        <input type = "email" name = "email" placeholder = "Enter Your Email" class = "signup-inputs" required
+                value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
+        <label for = "pwd1">Password:</label>
+        <input type = "password" name = "pass1" placeholder = "Enter Your Password" class = "signup-inputs" required
+                value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>">
+        <label for = "pwd2">Password:</label>
+        <input type = "password" name = "pass2" placeholder = "Repeat Your Password" class = "signup-inputs" required
+                value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>">
+        <label>If you have an account, please <a href="login.php">Log In</a></label>
+        <button type = "submit">Sign Up</button> 
     </form>
+    
 </div>
 
 <!-- Includes - Footer -->

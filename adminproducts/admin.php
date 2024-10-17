@@ -1,24 +1,28 @@
 <!-- ADMIN PHP -->
 
-<!-- Includes - Navigation Bar -->
+<!-- ADMIN Home Page MKTIME -->
 <?php
- include '../includes/adminnav.php';
-?>
 
-<!-- Administration Items to the CodeSpace DB -->
-<?php
+    /* Includes - Session */
+    include ('../includes/session.php');
+
+    /* Includes - Navigation Bar */
+    include ('../includes/adminnav.php');
+
     # Open database connection.
     require ( '../connections/connect_db.php' );
+
+    $welcome= "Welcome " . $_SESSION[ 'nickname' ];
         
     # Retrieve items from 'products' database table.
-    $q = "SELECT * FROM products";
+    $q = "SELECT * FROM view_items";
     $r = mysqli_query( $link, $q );
 
     if ( mysqli_num_rows( $r ) > 0 ) {
 
         echo '
         <div class="container">
-            <h2>MKTIME - CMS</h2>
+            <h2>'.$welcome.'</h2>
             <div class="row">';
         while ( $row = mysqli_fetch_array( $r, MYSQLI_ASSOC ))
         {

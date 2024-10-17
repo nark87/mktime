@@ -1,46 +1,33 @@
 <!-- HOME PHP -->
 
-<!-- Home Page to the CodeSpace DB -->
+<!-- This function likely redirects the user to the login page to authenticate themselves -->
+
+<!-- Home Page MKTIME -->
 <?php
+
+    /* Includes - Session */
+    include ('includes/session.php');
+
+    /* Includes - Navigation Bar */
+    include ('includes/nav.php');
+
     # Open database connection.
     require ( 'connections/connect_db.php' );
 
-    # Get User Email from Log In
-    if (isset($_GET['user_email'])) {
+    $welcome= "Welcome " . $_SESSION[ 'nickname' ];
         
-        $user_email = $_GET['user_email'];
-
-        /* Includes - User Navigation Bar */
-        include 'includes/usernav.php';
-
-        $welcome = "WELCOME " . $user_email;
-
-       /* $sql_item = "SELECT * FROM products WHERE item_id='$id'";
-        $result_item = mysqli_query($link,$sql_item);
-        $row_item = mysqli_fetch_array($result_item, MYSQLI_ASSOC);
-        $id_item = $row_item['item_id'];
-        $a_item = array("id" => $row_item['item_id'],
-                        "name" => $row_item['item_name'],
-                        "desc" => $row_item['item_desc'],
-                        "img" => $row_item['item_img'],
-                        "price" => $row_item['item_price']);*/
-    } else {
-        /* Includes - Navigation Bar */
-        include 'includes/nav.php';
-
-        $welcome= "HOME";
-    }
-        
-    # Retrieve items from 'products' database table.
-    $q = "SELECT * FROM products";
+    # Retrieve items from 'view_items' database table.
+    $q = "SELECT * FROM items";
     $r = mysqli_query( $link, $q );
 
     if ( mysqli_num_rows( $r ) > 0 ) {
 
         echo '
         <div class="container">
-            <h2>MKTIME - '.$welcome.'</h2>
+            <h2>'.$welcome.'</h2>
             <div class="row">';
+        
+        // Display body section
         while ( $row = mysqli_fetch_array( $r, MYSQLI_ASSOC ))
         {
             echo '
@@ -56,9 +43,6 @@
                         <li class="list-group-item btn"><a class="btn btn-success btn-lg btn-block" 
                             href="adminproducts/update.php?item_id='.$row['item_id'].'">Add to cart</a>
                         </li>
-                        <li class="list-group-item btn"><a class="btn btn-primary btn-lg btn-block" 
-                            href="adminproducts/delete.php?item_id='.$row['item_id'].'">Buy</a>
-                        </li>
                     </ul>
                 </div>
             </div>';
@@ -67,8 +51,11 @@
         echo '
         </div>
         </div>';
+
+        // Close database connection
+        mysqli_close( $link );
     }
-    else { 
+    else {  // Or display this message. No items
         echo '<p>There are currently no items in the table to display.</p>';
     }
 ?>

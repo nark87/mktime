@@ -1,73 +1,19 @@
 <!-- CREATE PHP -->
 
+<!-- ADMIN - Create Items Page MKTIME -->
+
 <!-- Includes - Navigation Bar -->
 <?php
- include '../includes/adminnav.php';
-?>
+    /* Includes - Session */
+    include ('../includes/session.php');
 
-<!-- Container -->
-<div class = "admin-form-container">
-    <form id = "create-form" action = "create.php" method = "post" class = "admin-form">
-        
-        <div class = "admin-form-title">
-            <h2>Add Item to the DDBB</h2>
-            <hr>
-        </div>    
-    
-        <!-- Input box for Item name  -->
-        <label for = "name">Name:</label>
-        <input type = "text" 
-            class = "admin-form-inputs" 
-            name = "item_name"
-            placeholder = "Enter the item name" 
-            required 
-            value = "">
-        
-        <!-- Input box for Item Description -->  
-        <label for = "description">Description:</label>
-        <textarea 
-            class = "admin-form-inputs" 
-            name = "item_desc"
-            placeholder = "Enter the item description"
-            required 
-            value ="">
-        </textarea>
-        
-        <!-- Input box for Image Path -->
-        <label for = "image">Image Path:</label>
-        <input type = "text" 
-            class = "admin-form-inputs" 
-            name = "item_img"
-            placeholder = "Enter the image path"
-            required 
-            value = "">
-        
-        <!-- Input box for Item Price -->
-        <label for = "price">Price:</label>
-        <input 
-            type = "number" 
-            class = "admin-form-inputs" 
-            name = "item_price" 
-            min = "0" step = "0.01"
-            placeholder = "Enter the item price"
-            required 
-            value = ""><br>
-        
-        <!-- submit button -->
-        <button type = "submit" class="btn btn-dark">Create Item</button>
-    </form>
-</div> 
+    /* Includes - Navigation Bar */
+    include ('../includes/adminnav.php');
 
-<!-- Includes - Footer -->
-<?php
- include '../includes/footer.php';
-?>
+    # Open database connection.
+    require ( '../connections/connect_db.php' );
 
-<!-- Create an Item to the CodeSpace DB -->
-<?php
     if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
-        # Connect to the database.
-        require ('../connections/connect_db.php'); 
 
         # Initialize an error array.
         $errors = array();
@@ -106,28 +52,97 @@
 
         # On success data into my_table on database.
         if ( empty( $errors ) ) {
-            $q = "INSERT INTO products (item_name, item_desc, item_img, item_price) 
+            $q = "INSERT INTO view_items (item_name, item_desc, item_img, item_price) 
             VALUES ('$n','$d', '$img', '$p' )";
             $r = @mysqli_query ( $link, $q ) ;
             
             if ($r) {
-                echo '<p>New record created successfully</p>';
+                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <h5 class="alert-heading" id="err_msg">New record created successfully</h5>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button></div>';
             }
     
             # Close database connection.
             mysqli_close($link); 
-
-            exit();
         }
         else # Or report errors.
         {
-            echo '<p>The following error(s) occurred:</p>' ;
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading" id="err_msg">The following errors occurred:</h5>';
             foreach ( $errors as $msg )
-            { echo "$msg<br>" ; }
-            echo '<p>Please try again.</p></div>';
+            { echo " - $msg<br>" ; }
+            echo 'Please try again.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button></div>';
+
             # Close database connection.
             mysqli_close( $link );   
         }  
     }
 ?>
+
+<!-- Container -->
+<div class = "create-form-container">
+    <form id = "create-form" action = "create.php" method = "post" class = "create-form">
+        
+        <div class = "create-form-title">
+            <h2>Create Item</h2>
+            <hr>
+        </div>    
+    
+        <!-- Input box for Item name  -->
+        <label for = "name">Name:</label>
+        <input type = "text" 
+            class = "create-form-inputs" 
+            name = "item_name"
+            placeholder = "Enter the item name" 
+            required 
+            value = "">
+        
+        <!-- Input box for Item Description -->  
+        <label for = "description">Description:</label>
+        <textarea 
+            class = "create-form-inputs" 
+            name = "item_desc"
+            placeholder = "Enter the item description"
+            resize = "none"
+            required 
+            value =""></textarea>
+        
+        <!-- Input box for Image Path -->
+        <label for = "image">Image Path:</label>
+        <input type = "text" 
+            class = "create-form-inputs" 
+            name = "item_img"
+            placeholder = "Enter the image path"
+            required 
+            value = "">
+        
+        <!-- Input box for Item Price -->
+        <label for = "price">Price:</label>
+        <input 
+            type = "number" 
+            class = "create-form-inputs" 
+            name = "item_price" 
+            min = "0" step = "0.01"
+            placeholder = "Enter the item price"
+            required 
+            value = ""><br>
+
+        <div class="button-create-container">
+            <!-- submit button -->
+            <button type = "submit" class="btn btn-dark button-create" style="background-color: #074d0f">Create Item</button>
+            <!-- Calcel button -->
+            <a href="admin.php"><button class="btn btn-dark" type="button">Cancel</button></a>
+        </div>
+    </form>
+</div> 
+
+<!-- Includes - Footer -->
+<?php
+ include '../includes/footer.php';
+?>
+
+
 

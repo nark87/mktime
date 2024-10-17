@@ -1,56 +1,4 @@
-/* ADMIN FORM - Create, update, delete */
-.admin-form-container {
-    height: 100vh;
-    align-items: center;
-    justify-content: space-evenly;
-    background: linear-gradient(#eef9cf,#f3f6df);
-}
-
-.admin-form {
-    display: flex;
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    flex-direction: column;
-    align-items: start;
-}
-
-.admin-form-title h2 {
-    font-weight: 600;
-    color:  #000000;
-    font-size: 40px;
-    margin-bottom: 5px;
-}
-
-.admin-form-title hr {
-    border: none;
-    width: 120px;
-    height: 5px;
-    background-color: #000000;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.admin-form-inputs {
-    width: 500px;
-    height: 50px;
-    border: none;
-    outline: none;
-    padding-left: 25px;
-    font-weight: 500;
-    color: rgb(6, 6, 6);
-    border-radius: 50px;
-}
-
-.admin-form-inputs:focus {
-    border: 2px solid  #000000;
-}
-
-.admin-form-inputs::placeholder {
-    color: #a9a9a9;
-}
-
-/* ADMIN - Read */
+/* READ PAGE*/
 
 .read-container {
     margin: 0;
@@ -117,4 +65,15 @@
     display: flex; 
     justify-content: center;
     align-items: center;
+}
+
+/* MEDIA SCREEN */
+@media (max-width:800px) {
+    .admin-form-inputs {
+        width: 80vw;
+    }
+
+    .admin-right {
+        display: none;
+    }
 }
