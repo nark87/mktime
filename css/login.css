@@ -1,5 +1,5 @@
 /* LOG IN */
-.login-container {
+/*.login-container {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -63,15 +63,123 @@
 
 .login-right img {
     width: 500px;
-}
+}*/
 
 /* MEDIA SCREEN */
-@media (max-width:800px) {
+/*@media (max-width:800px) {
     .login-inputs {
         width: 80vw;
     }
 
     .login-right {
         display: none;
+    }
+}*/
+
+.login-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #eaf9ec;
+}
+
+.login-container {
+    width: 80%;
+    margin: auto;
+    padding-top: 100px;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+}
+
+.login-left {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+.login-left-title h2{
+    font-weight: 600;
+    font-size: 40px;
+    margin-bottom: 5px;
+    color: #3d9e32;
+}
+
+.login-left-title hr {
+    border: none;
+    width: 220px;
+    height: 5px;
+    background-color: #3d9e32;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.login-inputs {
+    width: 400px;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color: rgb(6, 6, 6);
+    border-radius: 50px;
+}
+
+.login-inputs:focus {
+    border: 2px solid #3d9e32;
+}
+
+.login-inputs::placeholder {
+    color: #a9a9a9;
+}
+
+.login-left button {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #ffffff;
+    gap: 10px;
+    border: none;
+    border-radius: 50px;
+    background: #3d9e32;
+}
+
+.login-image-content {
+    float: right;
+    width: 40%;
+}
+
+.login-image-content img{
+    width: 410px;
+    height: auto;
+}
+
+/* MEDIA SCREEN */
+@media (max-width:800px) {
+    .login-container {
+        width: 80%;
+        display: block;
+        margin: auto;
+        padding-top: 50px;
+    }
+
+    .login-left {
+        float: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
+    }
+
+    .login-image-content {
+        float: none;
+        width: 100%;
+        display: block;
+        margin: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 }

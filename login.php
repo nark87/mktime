@@ -16,7 +16,26 @@
 ?>
 
 <!-- Container for Log In-->
-<div class = "login-container">
+<div class="login-section">
+    <div class="login-container">
+        <form action = "login_action.php" method = "POST" class="login-left">
+            <div class = "login-left-title">
+                <h2>Log In</h2>
+                <hr>
+            </div>
+            <input type = "email" name = "email" placeholder = "Enter Your Email" class = "login-inputs" required>
+            <input type = "password" name = "pass" placeholder = "Your Password" class = "login-inputs" required>
+            <label>If you don't have an account, please <a href="signup.php">Sign Up</a></label>
+            <button type = "submit">Log In</button>
+        </form>
+
+        <div class="login-image-content">
+            <img src="assets/login.jpg" alt = "login image">
+        </div>         
+    </div>
+</div>
+
+<!--<div class = "login-container">
     <form action = "login_action.php" method = "POST" class = "login-left">
         <div class = "login-left-title">
             <h2>Log In</h2>
@@ -30,7 +49,7 @@
     <div class = "login-right"> 
         <img src = "assets/login.jpg" alt = "login right image">
     </div>  
-</div>
+</div>-->
 
 <!-- Includes - Footer -->
 <?php
