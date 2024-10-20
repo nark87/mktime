@@ -34,7 +34,7 @@ function validate( $link, $email = '', $pwd = '')
   # On success retrieve user_id, first_name, last name and nickname from 'view_users' database.
   if ( empty( $errors ) ) 
   {
-    $q = "SELECT user_id, first_name, last_name, nickname, role_id FROM view_users WHERE email='$e' AND pass='$p'" ;  
+    $q = "SELECT user_id, first_name, last_name, nickname, email, role_id FROM view_users WHERE email='$e' AND pass='$p'" ;  
     $r = mysqli_query ( $link, $q ) ;
     if ( @mysqli_num_rows( $r ) == 1 ) 
     {

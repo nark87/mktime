@@ -34,5 +34,6 @@
 
 <!-- Includes - Footer -->
 <?php
+    include 'includes/footeruser.html';
     include 'includes/footer.php';
 ?>

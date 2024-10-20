@@ -104,41 +104,45 @@
 ?>
 
 <!-- Container - Form for Sign Up -->
-<div class = "signup-container">
-    <div class = "signup-left"> 
-        <div class = "signup-left-title">
-            <h2>Sign Up</h2>
-            <hr>
-        </div>
-        <img src = "assets/signup.png" alt = "sign up left image">
-    </div>  
-    <form action = "signup.php" method = "POST" class = "signup-right">
-
-        <label for = "fName">First Name:</label>
-        <input type = "text" name = "firstName" placeholder = "Enter Your First Name" class = "signup-inputs" required
-                value="<?php if (isset($_POST['firstName'])) echo $_POST['firstName']; ?>">
-        <label for = "lName">Last Name:</label>
-        <input type = "text" name = "lastName" placeholder = "Enter Your Last Name" class = "signup-inputs" required
-                value="<?php if (isset($_POST['lastName'])) echo $_POST['lastName']; ?>">
-        <label for = "nick">Nickname:</label>
-        <input type = "text" name = "nickname" placeholder = "Enter Your Nickname" class = "signup-inputs" required
-                value="<?php if (isset($_POST['nickname'])) echo $_POST['nickname']; ?>">
-        <label for = "eml">Email:</label>
-        <input type = "email" name = "email" placeholder = "Enter Your Email" class = "signup-inputs" required
-                value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
-        <label for = "pwd1">Password:</label>
-        <input type = "password" name = "pass1" placeholder = "Enter Your Password" class = "signup-inputs" required
-                value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>">
-        <label for = "pwd2">Password:</label>
-        <input type = "password" name = "pass2" placeholder = "Repeat Your Password" class = "signup-inputs" required
-                value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>">
-        <label>If you have an account, please <a href="login.php">Log In</a></label>
-        <button type = "submit">Sign Up</button> 
-    </form>
-    
+<div class="signup-section">
+    <div class = "signup-title">
+        <h2>Sign Up</h2>
+        <hr>
+    </div>
+    <div class = "signup-container">
+        <div class = "signup-left"> 
+            <img src = "assets/signup.png" alt = "sign up left image">
+        </div>  
+        <form action = "signup.php" method = "POST" class = "signup-right">
+            
+            <label for = "fName">First Name:</label>
+            <input type = "text" name = "firstName" placeholder = "Enter Your First Name" class = "signup-inputs" required
+                    value="<?php if (isset($_POST['firstName'])) echo $_POST['firstName']; ?>">
+            <label for = "lName">Last Name:</label>
+            <input type = "text" name = "lastName" placeholder = "Enter Your Last Name" class = "signup-inputs" required
+                    value="<?php if (isset($_POST['lastName'])) echo $_POST['lastName']; ?>">
+            <label for = "nick">Nickname:</label>
+            <input type = "text" name = "nickname" placeholder = "Enter Your Nickname" class = "signup-inputs" required
+                    value="<?php if (isset($_POST['nickname'])) echo $_POST['nickname']; ?>">
+            <label for = "eml">Email:</label>
+            <input type = "email" name = "email" placeholder = "Enter Your Email" class = "signup-inputs" required
+                    value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
+            <label for = "pwd1">Password:</label>
+            <input type = "password" name = "pass1" placeholder = "Enter Your Password" class = "signup-inputs" required
+                    value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>">
+            <label for = "pwd2">Password:</label>
+            <input type = "password" name = "pass2" placeholder = "Repeat Your Password" class = "signup-inputs" required
+                    value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>">
+            <label>If you have an account, please <a href="login.php">Log In</a></label>
+            <button type = "submit">Sign Up</button> 
+        </form>
+        
+    </div>
 </div>
+
 
 <!-- Includes - Footer -->
 <?php
+    include 'includes/footeruser.html';
     include 'includes/footer.php';
 ?>

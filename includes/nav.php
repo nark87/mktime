@@ -21,6 +21,9 @@
         integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" 
         crossorigin="anonymous">
 
+    <!-- Font Awesome CSS, Icons -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
     <!-- Style CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/read.css" />
@@ -29,6 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../css/delete.css" />
     <link rel="stylesheet" type="text/css" href="css/login.css" />
     <link rel="stylesheet" type="text/css" href="css/signup.css" />
+    <link rel="stylesheet" type="text/css" href="css/contact.css" />
+    <link rel="stylesheet" type="text/css" href="css/aboutus.css" />
 
   </head>
   <body>

@@ -1,7 +1,7 @@
 /* CREATE FORM */
 
 .create-form-container {
-    height: 99vh;
+    height: 92vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -50,6 +50,12 @@
 
 .create-form-inputs::placeholder {
     color: #a9a9a9;
+}
+
+.create-form-inputs textarea {
+    height: 140px;
+    padding-top: 15px;
+    border-radius: 20px;
 }
 
 .create-right img {

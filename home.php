@@ -32,7 +32,7 @@
         {
             echo '
             <div class="col-md-3 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;">
+                <div class="card mb-3" style="width: 18rem;">
                     <img src='. $row['item_img'].' class="card-img-top" alt="T-Shirt">
                     <div class="card-body">
                         <h5 class="card-title text-center">' . $row['item_name'] .'</h5>
@@ -62,5 +62,6 @@
 
 <!-- Includes - Footer -->
 <?php
+    include 'includes/footeruser.html';
     include 'includes/footer.php';
 ?>

@@ -20,6 +20,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
     $_SESSION[ 'first_name' ] = $data[ 'first_name' ] ;
     $_SESSION[ 'last_name' ] = $data[ 'last_name' ] ;
     $_SESSION[ 'nickname' ] = $data[ 'nickname' ] ;
+    $_SESSION[ 'email' ] = $data[ 'email' ] ;
     $_SESSION[ 'role_id' ] = $data[ 'role_id' ] ;
 
     if ($_SESSION[ 'role_id' ] == 1) { // Role_id equal 1 is a admin role
