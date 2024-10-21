@@ -6,7 +6,7 @@
 <?php
         
     /* Includes - Session */
-    include ('../includes/session.php');
+    include ('../includes/sessionadm.php');
 
     /* Includes - Navigation Bar */
     include ('../includes/adminnav.php');
@@ -112,16 +112,101 @@
 ?>
 
 <!-- Container -->
-<div class = "update-form-container">
+<div class="update-section">
+    <form action = "update.php" method = "post" class="update-container">
+        <div class = "update-left"> 
+            <div class = "update-left-title">
+                <h2>Update Item</h2>
+                <hr>
+            </div>
+            
+            <!-- Item ID  -->
+            <label for = "id">Item ID:</label>
+            <input type = "text" 
+                class = "update-inputs" 
+                name = "item_id"
+                id="item_id"
+                placeholder = "Enter the item id" 
+                required
+                readonly
+                value = "<?php if (isset($_POST['item_id']))
+                    {  echo $_POST['item_id']; } else { echo $a_item['id'];}?>">
+        
+            <!-- Input box for Item name  -->
+            <label for = "name">Name:</label>
+            <input type = "text" 
+                class = "update-inputs" 
+                name = "item_name"
+                id="item_name"
+                placeholder = "Enter the item name" 
+                required 
+                value = "<?php if (isset($_POST['item_name']))
+                    {  echo $_POST['item_name']; } else { echo $a_item['name'];}?>">
+            
+            <!-- Input box for Item Description -->  
+            <label for = "description">Description:</label>
+            <textarea 
+                class = "update-inputs" 
+                name = "item_desc"
+                id="item_desc"
+                text-align = "center"
+                placeholder = "Enter the item description"
+                required><?php if (isset($_POST['item_desc']))
+                    {  echo $_POST['item_desc']; } else { echo $a_item['desc'];}?></textarea>
+            
+            <!-- Input box for Image Path -->
+            <label for = "image">Image Path:</label>
+            <input type = "text" 
+                class = "update-inputs" 
+                name = "item_img"
+                id="item_img"
+                placeholder = "Enter the image path"
+                required 
+                value = "<?php if (isset($_POST['item_img']))
+                    {  echo $_POST['item_img']; } else { echo $a_item['img'];}?>">
+            
+            <!-- Input box for Item Price -->
+            <label for = "price">Price:</label>
+            <input 
+                type = "number" 
+                class = "update-inputs" 
+                name = "item_price"
+                id="item_price"
+                min = "0" step = "0.01"
+                placeholder = "Enter the item price"
+                required 
+                value = "<?php if (isset($_POST['item_price']))
+                    {  echo $_POST['item_price']; } else { echo $a_item['price'];}?>"><br>
+        </div>
+        <div class="update-image-content">
+            <div class="update-image-content bg-image">
+                <img src="../<?php if (isset($_POST['item_img']))
+                    {  echo $_POST['item_img']; } else { echo $a_item['img'];}?>"/>
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.5)">
+                    <div class="text">
+                        <p>Update Item</p>
+                    </div>
+                </div> 
+            </div>
+            <div class="button-update-container">
+                <!-- submit button -->
+                <button type = "submit" class="btn btn-dark button-update" style="background-color: #f69610">Update Item</button>
+                <!-- Calcel button -->
+                <a href="admin.php"><button class="btn btn-dark" type="button">Cancel</button></a>
+            </div>
+        </div>
+    </form>
+</div>
+<!--<div class = "update-form-container">
     <form action = "update.php" method = "post" class = "update-form">
         
         <div class = "update-form-title">
             <h2>Update Item</h2>
             <hr>
-        </div>
+        </div>-->
         
         <!-- Item ID  -->
-        <label for = "id">Item ID:</label>
+        <!--<label for = "id">Item ID:</label>
         <input type = "text" 
             class = "update-form-inputs" 
             name = "item_id"
@@ -129,44 +214,40 @@
             placeholder = "Enter the item id" 
             required
             readonly
-            value = "<?php if (isset($_POST['item_id']))
-            {  echo $_POST['item_id']; } else { echo $a_item['id'];}?>">
+            value = "<?php //if (isset($_POST['item_id'])){  //echo $_POST['item_id']; } else { echo $a_item['id'];}?>">-->
     
         <!-- Input box for Item name  -->
-        <label for = "name">Name:</label>
+        <!--<label for = "name">Name:</label>
         <input type = "text" 
             class = "update-form-inputs" 
             name = "item_name"
             id="item_name"
             placeholder = "Enter the item name" 
             required 
-            value = "<?php if (isset($_POST['item_name']))
-            {  echo $_POST['item_name']; } else { echo $a_item['name'];}?>">
+            value = "<?php //if (isset($_POST['item_name'])){  echo $_POST['item_name']; } else { echo $a_item['name'];}?>">-->
         
         <!-- Input box for Item Description -->  
-        <label for = "description">Description:</label>
+        <!--<label for = "description">Description:</label>
         <textarea 
             class = "update-form-inputs" 
             name = "item_desc"
             id="item_desc"
             text-align = "center"
             placeholder = "Enter the item description"
-            required><?php if (isset($_POST['item_desc']))
-            {  echo $_POST['item_desc']; } else { echo $a_item['desc'];}?></textarea>
+            required><?php //if (isset($_POST['item_desc'])){  echo $_POST['item_desc']; } else { echo $a_item['desc'];}?></textarea>-->
         
         <!-- Input box for Image Path -->
-        <label for = "image">Image Path:</label>
+        <!--<label for = "image">Image Path:</label>
         <input type = "text" 
             class = "update-form-inputs" 
             name = "item_img"
             id="item_img"
             placeholder = "Enter the image path"
             required 
-            value = "<?php if (isset($_POST['item_img']))
-            {  echo $_POST['item_img']; } else { echo $a_item['img'];}?>">
+            value = "<?php //if (isset($_POST['item_img'])){  echo $_POST['item_img']; } else { echo $a_item['img'];}?>">-->
         
         <!-- Input box for Item Price -->
-        <label for = "price">Price:</label>
+        <!--<label for = "price">Price:</label>
         <input 
             type = "number" 
             class = "update-form-inputs" 
@@ -175,25 +256,23 @@
             min = "0" step = "0.01"
             placeholder = "Enter the item price"
             required 
-            value = "<?php if (isset($_POST['item_price']))
-            {  echo $_POST['item_price']; } else { echo $a_item['price'];}?>"><br>
+            value = "<?php //if (isset($_POST['item_price'])){  echo $_POST['item_price']; } else { echo $a_item['price'];}?>"><br>
         
-        <div class="button-update-container">
+        <div class="button-update-container">-->
             <!-- submit button -->
-            <button type = "submit" class="btn btn-dark button-update" style="background-color: #f69610">Update Item</button>
+            <!--<button type = "submit" class="btn btn-dark button-update" style="background-color: #f69610">Update Item</button>-->
             <!-- Calcel button -->
-            <a href="admin.php"><button class="btn btn-dark" type="button">Cancel</button></a>
-        </div>
+            <!--<a href="admin.php"><button class="btn btn-dark" type="button">Cancel</button></a>-->
+        <!--</div>
     </form>
     <div class=" update-right bg-image">
-        <img src="../<?php if (isset($_POST['item_img']))
-            {  echo $_POST['item_img']; } else { echo $a_item['img'];}?>" style="width:300px" alt = "update item image"/>
+        <img src="../<?php //if (isset($_POST['item_img'])){  echo $_POST['item_img']; } else { echo $a_item['img'];}?>" style="width:300px" alt = "update item image"/>
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.5)">
             <div class="text">
             <p>Update Item</p>
         </div>
     </div>
-</div> 
+</div> -->
 
 <!-- Includes - Footer -->
 <?php

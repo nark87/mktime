@@ -4,7 +4,7 @@
 <?php
      
     /* Includes - Session */
-    include ('../includes/session.php');
+    include ('../includes/sessionadm.php');
 
     /* Includes - Navigation Bar */
     include ('../includes/adminnav.php');

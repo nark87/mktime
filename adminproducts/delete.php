@@ -6,7 +6,7 @@
 <?php
 
     /* Includes - Session */
-    include ('../includes/session.php');
+    include ('../includes/sessionadm.php');
 
     /* Includes - Navigation Bar */
     include ('../includes/adminnav.php');
@@ -52,16 +52,95 @@
 ?>
 
 <!-- Container -->
-<div class = "delete-form-container">
+<div class="delete-section">
+    <form action = "delete.php" method = "post" class="delete-container">
+        <div class = "delete-left">
+            
+            <div class = "delete-left-title">
+                <h2>Delete Item</h2>
+                <hr>
+            </div>
+            
+            <!-- Item ID  -->
+            <label for = "id">Item ID:</label>
+            <input type = "text" 
+                class = "delete-inputs" 
+                name = "item_id"
+                id="item_id"
+                placeholder = "Enter the item id" 
+                required
+                readonly
+                value = "<?php echo $a_item['id'];?>">
+        
+            <!-- Input box for Item name  -->
+            <label for = "name">Name:</label>
+            <input type = "text" 
+                class = "delete-inputs" 
+                name = "item_name"
+                placeholder = "Enter the item name" 
+                required
+                readonly
+                value = "<?php echo $a_item['name'];?>">
+            
+            <!-- Input box for Item Description -->  
+            <label for = "description">Description:</label>
+            <textarea 
+                class = "delete-inputs" 
+                name = "item_desc"
+                placeholder = "Enter the item description"
+                required
+                readonly><?php echo $a_item['desc'];?></textarea>
+            
+            <!-- Input box for Image Path -->
+            <label for = "image">Image Path:</label>
+            <input type = "text" 
+                class = "delete-inputs" 
+                name = "item_img"
+                placeholder = "Enter the image path"
+                required
+                readonly
+                value = "<?php echo $a_item['img'];?>">
+            
+            <!-- Input box for Item Price -->
+            <label for = "price">Price:</label>
+            <input 
+                type = "number" 
+                class = "delete-inputs" 
+                name = "item_price" 
+                min = "0" step = "0.01"
+                placeholder = "Enter the item price"
+                required
+                readonly
+                value = "<?php echo $a_item['price'];?>"><br>
+        </div>
+        <div class="delete-image-content">
+            <div class="bg-image">
+                <img src="../<?php echo $a_item['img'];?>"/>
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.5)">
+                    <div class="text">
+                        <p>Delete Item</p>
+                    </div>
+                </div> 
+            </div>
+            <div class="button-delete-container">
+                <!-- submit button -->
+                <button type = "submit" class="btn btn-dark button-delete" style="background-color: #880b15">Delete Item</button>
+                <!-- Calcel button -->
+                <a href="admin.php"><button class="btn btn-dark" type="button">Cancel</button></a>
+            </div>
+        </div>    
+    </form>
+</div>
+<!--<div class = "delete-form-container">
     <form action = "delete.php" method = "post" class = "delete-form">
         
         <div class = "delete-form-title">
             <h2>Delete Item</h2>
             <hr>
-        </div>
+        </div>-->
         
         <!-- Item ID  -->
-        <label for = "id">Item ID:</label>
+        <!--<label for = "id">Item ID:</label>
         <input type = "text" 
             class = "delete-form-inputs" 
             name = "item_id"
@@ -69,39 +148,39 @@
             placeholder = "Enter the item id" 
             required
             readonly
-            value = "<?php echo $a_item['id'];?>">
+            value = "<?php //echo $a_item['id'];?>">-->
     
         <!-- Input box for Item name  -->
-        <label for = "name">Name:</label>
+        <!--<label for = "name">Name:</label>
         <input type = "text" 
             class = "delete-form-inputs" 
             name = "item_name"
             placeholder = "Enter the item name" 
             required
             readonly
-            value = "<?php echo $a_item['name'];?>">
+            value = "<?php //echo $a_item['name'];?>">-->
         
         <!-- Input box for Item Description -->  
-        <label for = "description">Description:</label>
+        <!--<label for = "description">Description:</label>
         <textarea 
             class = "delete-form-inputs" 
             name = "item_desc"
             placeholder = "Enter the item description"
             required
-            readonly><?php echo $a_item['desc'];?></textarea>
+            readonly><?php //echo $a_item['desc'];?></textarea>-->
         
         <!-- Input box for Image Path -->
-        <label for = "image">Image Path:</label>
+        <!--<label for = "image">Image Path:</label>
         <input type = "text" 
             class = "delete-form-inputs" 
             name = "item_img"
             placeholder = "Enter the image path"
             required
             readonly
-            value = "<?php echo $a_item['img'];?>">
+            value = "<?php //echo $a_item['img'];?>">-->
         
         <!-- Input box for Item Price -->
-        <label for = "price">Price:</label>
+        <!--<label for = "price">Price:</label>
         <input 
             type = "number" 
             class = "delete-form-inputs" 
@@ -110,24 +189,24 @@
             placeholder = "Enter the item price"
             required
             readonly
-            value = "<?php echo $a_item['price'];?>"><br>
+            value = "<?php //echo $a_item['price'];?>"><br>
         
-        <div class="button-delete-container">
+        <div class="button-delete-container">-->
             <!-- submit button -->
-            <button type = "submit" class="btn btn-dark button-delete" style="background-color: #880b15">Delete Item</button>
+            <!--<button type = "submit" class="btn btn-dark button-delete" style="background-color: #880b15">Delete Item</button>-->
             <!-- Calcel button -->
-            <a href="admin.php"><button class="btn btn-dark" type="button">Cancel</button></a>
+            <!--<a href="admin.php"><button class="btn btn-dark" type="button">Cancel</button></a>
         </div>
     </form>
     <div class=" delete-right bg-image">
-        <img src="../<?php echo $a_item['img'];?>" style="width:300px"/>
+        <img src="../<?php //echo $a_item['img'];?>" style="width:300px"/>
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.5)">
             <div class="text">
             <p>Delete Item</p>
         </div>
     </div>
 </div>
-</div> 
+</div> -->
 
 <!-- Includes - Footer -->
 <?php

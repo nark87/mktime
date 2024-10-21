@@ -30,6 +30,8 @@
 /*img*/
 .read-container ul li span:nth-child(1) {
     width: 100px;
+    height: auto;
+    object-fit: cover;
 }
 
 /*name*/
@@ -55,7 +57,7 @@
     width: 100px;
     padding: 0 10px 0 10px;
     display: flex; 
-    justify-content: right;
+    justify-content: center;
     align-items: center;
 }
 
@@ -69,11 +71,18 @@
 
 /* MEDIA SCREEN */
 @media (max-width:800px) {
-    .admin-form-inputs {
-        width: 80vw;
+
+    /*description*/
+    .read-container ul li span:nth-child(3) {
+        display: none;
     }
 
-    .admin-right {
-        display: none;
+    /*name*/
+    .read-container ul li span:nth-child(2) {
+        width: 200px;
+        padding: 0 10px 0 10px;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
     }
 }

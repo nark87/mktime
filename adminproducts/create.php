@@ -5,7 +5,7 @@
 <!-- Includes - Navigation Bar -->
 <?php
     /* Includes - Session */
-    include ('../includes/session.php');
+    include ('../includes/sessionadm.php');
 
     /* Includes - Navigation Bar */
     include ('../includes/adminnav.php');
@@ -83,61 +83,61 @@
 ?>
 
 <!-- Container -->
-<div class = "create-form-container">
-    <form id = "create-form" action = "create.php" method = "post" class = "create-form">
-        
-        <div class = "create-form-title">
-            <h2>Create Item</h2>
-            <hr>
-        </div>    
-    
-        <!-- Input box for Item name  -->
-        <label for = "name">Name:</label>
-        <input type = "text" 
-            class = "create-form-inputs" 
-            name = "item_name"
-            placeholder = "Enter the item name" 
-            required 
-            value = "">
-        
-        <!-- Input box for Item Description -->  
-        <label for = "description">Description:</label>
-        <textarea 
-            class = "create-form-inputs" 
-            name = "item_desc"
-            placeholder = "Enter the item description"
-            resize = "none"
-            required 
-            value =""></textarea>
-        
-        <!-- Input box for Image Path -->
-        <label for = "image">Image Path:</label>
-        <input type = "text" 
-            class = "create-form-inputs" 
-            name = "item_img"
-            placeholder = "Enter the image path"
-            required 
-            value = "">
-        
-        <!-- Input box for Item Price -->
-        <label for = "price">Price:</label>
-        <input 
-            type = "number" 
-            class = "create-form-inputs" 
-            name = "item_price" 
-            min = "0" step = "0.01"
-            placeholder = "Enter the item price"
-            required 
-            value = ""><br>
+<div class="create-section">
+    <div class="create-container">
+        <form action = "create.php" method = "post" class = "create-left"> 
+            <div class = "create-left-title">
+                <h2>Create Item</h2>
+                <hr>
+            </div>
+            <!-- Input box for Item name  -->
+            <label for = "name">Name:</label>
+            <input type = "text" 
+                class = "create-inputs" 
+                name = "item_name"
+                placeholder = "Enter the item name" 
+                required 
+                value = "">
+            
+            <!-- Input box for Item Description -->  
+            <label for = "description">Description:</label>
+            <textarea 
+                class = "create-inputs" 
+                name = "item_desc"
+                placeholder = "Enter the item description"
+                resize = "none"
+                required 
+                value =""></textarea>
+            
+            <!-- Input box for Image Path -->
+            <label for = "image">Image Path:</label>
+            <input type = "text" 
+                class = "create-inputs" 
+                name = "item_img"
+                placeholder = "Enter the image path"
+                required 
+                value = "">
+            
+            <!-- Input box for Item Price -->
+            <label for = "price">Price:</label>
+            <input 
+                type = "number" 
+                class = "create-inputs" 
+                name = "item_price" 
+                min = "0" step = "0.01"
+                placeholder = "Enter the item price"
+                required 
+                value = ""><br>
 
-        <div class="button-create-container">
-            <!-- submit button -->
-            <button type = "submit" class="btn btn-dark button-create" style="background-color: #074d0f">Create Item</button>
-            <!-- Calcel button -->
-            <a href="admin.php"><button class="btn btn-dark" type="button">Cancel</button></a>
-        </div>
-    </form>
-</div> 
+            <div class="button-create-container">
+                <!-- submit button -->
+                <button type = "submit" class="btn btn-dark button-create" style="background-color: #074d0f">Create Item</button>
+                <!-- Calcel button -->
+                <a href="admin.php"><button class="btn btn-dark" type="button">Cancel</button></a>
+            </div>
+        </form>      
+    </div>
+</div>
 
 <!-- Includes - Footer -->
 <?php

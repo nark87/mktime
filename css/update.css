@@ -1,6 +1,6 @@
 /* UPDATE FORM */
 
-.update-form-container {
+/*.update-form-container {
     height: 99vh;
     display: flex;
     align-items: center;
@@ -54,25 +54,142 @@
 
 .update-right img {
     width: 300px;
-}
+}*/
 
 /* Button container */
-.button-update-container {
+/*.button-update-container {
     display: flex;
 }
 
 .button-update {
     margin-right: 20px;
     margin-left: 20px;
-}
+}*/
 
 /* MEDIA SCREEN */
-@media (max-width:800px) {
+/*@media (max-width:800px) {
     .update-form-inputs {
         width: 80vw;
     }
 
     .update-right {
         display: none;
+    }
+}*/
+
+.update-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fce37d;
+}
+
+.update-container {
+    width: 100%;
+    margin: auto;
+    padding-top: 25px;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+}
+
+.update-left {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+
+.update-left-title h2{
+    font-weight: 600;
+    font-size: 40px;
+    margin-bottom: 5px;
+    color: #f69610;
+}
+
+.update-left-title hr {
+    border: none;
+    width: 220px;
+    height: 5px;
+    background-color: #f69610;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.update-inputs {
+    width: 430px;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color: rgb(6, 6, 6);
+    border-radius: 50px;
+}
+
+.update-left textarea {
+    height: 100px;
+    padding-top: 15px;
+    padding-right: 4px;
+    border-radius: 20px;
+}
+
+.update-inputs:focus {
+    border: 2px solid #f69610;
+}
+
+.update-inputs::placeholder {
+    color: #a9a9a9;
+}
+
+.button-update-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.button-update {
+    margin-right: 20px; 
+}
+
+.update-image-content {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.update-image-content img{
+    width: 300px;
+    height: auto;
+}
+
+/* MEDIA SCREEN */
+@media (max-width:800px) {
+    .update-container {
+        width: 80%;
+        display: block;
+        margin: auto;
+        padding-top: 50px;
+    }
+
+    .update-left {
+        float: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .update-image-content {
+        float: none;
+        display: flex;
+        margin: auto;
+        align-items: center;
+    }
+
+    .update-image-content img{
+        width: 300px;
+        height: auto;
     }
 }

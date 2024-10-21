@@ -58,12 +58,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="read.php">Read Items</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link" href="update.php">Update Item</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="delete.php">Delete Item</a>
-            </li>
+            </li>-->
             </ul>
         </div>
         <div>

@@ -1,6 +1,6 @@
-<!-- PRODUCTS PHP -->
+<!-- CHECK OUT PHP -->
 
-<!-- Products Page MKTIME -->
+<!-- Check Out Page MKTIME -->
 <?php
     /* Includes - Session */
     include ('includes/session.php');
@@ -11,7 +11,7 @@
     # Open database connection.
     require ( 'connections/connect_db.php' );
 
-    $welcome= $_SESSION[ 'nickname' ] . " PRODUCTS";
+    $welcome= $_SESSION[ 'nickname' ] . " CHECK OUT";
 
     echo '<h2>MKTIME - '.$welcome.'</h2>'
 ?>

@@ -1,6 +1,6 @@
 /* CREATE FORM */
 
-.create-form-container {
+/*.create-form-container {
     height: 92vh;
     display: flex;
     align-items: center;
@@ -60,25 +60,116 @@
 
 .create-right img {
     width: 500px;
-}
+}*/
 
 /* Button container */
-.button-create-container {
+/*.button-create-container {
     display: flex;
 }
 
 .button-create {
     margin-right: 20px;
     margin-left: 20px;
-}
+}*/
 
 /* MEDIA SCREEN */
-@media (max-width:800px) {
+/*@media (max-width:800px) {
     .create-form-inputs {
         width: 80vw;
     }
 
     .create-right {
         display: none;
+    }
+}*/
+
+.create-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fce37d;
+}
+
+.create-container {
+    width: 100%;
+    margin: auto;
+    padding-top: 25px;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+}
+
+.create-left {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+
+.create-left-title h2{
+    font-weight: 600;
+    font-size: 40px;
+    margin-bottom: 5px;
+    color: #f69610;
+}
+
+.create-left-title hr {
+    border: none;
+    width: 220px;
+    height: 5px;
+    background-color: #f69610;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.create-inputs {
+    width: 430px;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color: rgb(6, 6, 6);
+    border-radius: 50px;
+}
+
+.create-left textarea {
+    height: 100px;
+    padding-top: 15px;
+    padding-right: 4px;
+    border-radius: 20px;
+}
+
+.create-inputs:focus {
+    border: 2px solid #f69610;
+}
+
+.create-inputs::placeholder {
+    color: #a9a9a9;
+}
+
+.button-create-container {
+    display: flex;
+}
+
+.button-create {
+    margin-right: 20px; 
+}
+
+/* MEDIA SCREEN */
+@media (max-width:800px) {
+    .create-container {
+        width: 80%;
+        display: block;
+        margin: auto;
+        padding-top: 50px;
+    }
+
+    .create-left {
+        float: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
     }
 }

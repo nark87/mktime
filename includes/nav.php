@@ -53,7 +53,7 @@
                 <a class="nav-link" href="home.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="products.php">Products</a>
+                <a class="nav-link" href="checkout.php">Check Out</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="aboutus.php">About us</a>
