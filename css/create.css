@@ -86,7 +86,7 @@
 .create-section {
     width: 100%;
     min-height: 100vh;
-    background-color: #fce37d;
+    background-color: #d0f4a0;
 }
 
 .create-container {
@@ -110,14 +110,14 @@
     font-weight: 600;
     font-size: 40px;
     margin-bottom: 5px;
-    color: #f69610;
+    color: #074d0f;
 }
 
 .create-left-title hr {
     border: none;
     width: 220px;
     height: 5px;
-    background-color: #f69610;
+    background-color: #074d0f;
     border-radius: 10px;
     margin-bottom: 20px;
 }
@@ -141,7 +141,7 @@
 }
 
 .create-inputs:focus {
-    border: 2px solid #f69610;
+    border: 2px solid #074d0f;
 }
 
 .create-inputs::placeholder {
