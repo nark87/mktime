@@ -27,7 +27,7 @@ if (mysqli_num_rows($r) == 1)
         <div class="container">
             <div class="alert alert-success" role="alert">
                 <p>Another '.$row["item_name"].' has been added to your cart</p>
-                <a href="home.php"> Continue Shopping</a> | <a href="cart.php">View Cart</a>
+                <a data-cy="btn-continue" href="home.php"> Continue Shopping</a> | <a data-cy="btn-view-cart" href="cart.php">View Cart</a>
             </div>
         </div>';
     } else
@@ -37,9 +37,9 @@ if (mysqli_num_rows($r) == 1)
 
         echo '
         <div class="container">
-            <div class="alert alert-success" role="alert">
+            <div data-cy="alert-add-shop" class="alert alert-success" role="alert">
                 <p>A '.$row["item_name"].' has been added to your cart</p>
-                <a href="home.php"> Continue Shopping</a> | <a href="cart.php">View Cart</a>
+                <a data-cy="btn-continue" href="home.php"> Continue Shopping</a> | <a data-cy="btn-view-cart" href="cart.php">View Cart</a>
             </div>
         </div>';
     }

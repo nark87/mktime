@@ -37,7 +37,9 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand">
-            <img src="assets/user_icon.png" width="30" height="30" class="d-inline-block align-top" alt=""><?php echo ' '. $_SESSION[ 'nickname' ]?></a>
+            <img src="assets/user_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+        <a data-cy="home-nick" class="navbar-brand"><?php echo ' '. $_SESSION[ 'nickname' ]?></a>
         <button class="navbar-toggler" type="button" 
             data-toggle="collapse" 
             data-target="#navbarNav" 
@@ -62,6 +64,6 @@
             </ul>
         </div>
         <div>
-            <button class="btn btn-outline-primary" type="submit" onclick="location.href = 'logout.php';">Log Out</button>
+            <button data-cy="home-logout" class="btn btn-outline-primary" type="submit" onclick="location.href = 'logout.php';">Log Out</button>
         </div>  
     </nav> 

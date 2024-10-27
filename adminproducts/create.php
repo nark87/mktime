@@ -13,6 +13,10 @@
     # Open database connection.
     require ( '../connections/connect_db.php' );
 
+    # Retrieve item categories from 'view_category_item' database table.
+    $qC = "SELECT * FROM view_category_item";
+    $rC = mysqli_query( $link, $qC );
+
     if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
 
         # Initialize an error array.
@@ -41,6 +45,14 @@
         else {
             $img = mysqli_real_escape_string( $link, trim( $_POST[ 'item_img' ] ) ) ;
         }
+
+        # Check for a item category.
+        if (empty( $_POST[ 'selectcategory' ] ) ) {
+            $errors[] = 'Enter the item category.' ;
+        }
+        else {
+            $c = mysqli_real_escape_string( $link, trim( $_POST[ 'selectcategory' ] ) ) ;
+        }
     
         # Check for a item price.
         if (empty( $_POST[ 'item_price' ] ) ) {
@@ -52,8 +64,8 @@
 
         # On success data into my_table on database.
         if ( empty( $errors ) ) {
-            $q = "INSERT INTO view_items (item_name, item_desc, item_img, item_price) 
-            VALUES ('$n','$d', '$img', '$p' )";
+            $q = "INSERT INTO view_items (item_name, item_desc, item_img, item_price, category_id) 
+            VALUES ('$n','$d', '$img', '$p', '$c' )";
             $r = @mysqli_query ( $link, $q ) ;
             
             if ($r) {
@@ -117,9 +129,20 @@
                 placeholder = "Enter the image path"
                 required 
                 value = "">
-            
+
+            <!-- Input box for Category -->
+            <label for = "categor">Category:</label>
+            <div>
+                <select name="selectcategory" class="form-control create-inputs">
+                    <option >Select a category</option><?php
+                        while ( $row = mysqli_fetch_array( $rC, MYSQLI_ASSOC )){
+                            echo '<option name="'.$row['category_id'].'" id="categ" value="'.$row['category_id'].'">'.$row['category_name'].'</option>';
+                        } ?>
+                    </select>
+            </div>
+
             <!-- Input box for Item Price -->
-            <label for = "price">Price:</label>
+            <label for = "price">Price (&pound):</label>
             <input 
                 type = "number" 
                 class = "create-inputs" 

@@ -9,6 +9,13 @@ body {
     font-family: 'Outfit';
 }
 
+/* HOME PAGE */
+
+.selec {
+    margin: 15px 0px 25px 0px;
+    width: 200px;
+}
+
 
 /* MDB bootstrap - Mask */
 .bg-image{

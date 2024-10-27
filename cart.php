@@ -37,7 +37,7 @@ if (!empty($_SESSION['cart']))
     require ('connections/connect_db.php');
 
     # Retrieve all items in the cart from the 'items' database table
-    $q = "SELECT * FROM view_items WHERE item_id IN (";
+    $q = "SELECT * FROM view_items, view_category_item WHERE view_items.category_id = view_category_item.category_id AND item_id IN (";
     foreach ($_SESSION['cart'] as $id => $value) { $q .= $id . ',';}
     $q = substr($q, 0, -1) . ') ORDER BY item_id ASC';
     $r = mysqli_query ($link, $q);
@@ -54,7 +54,7 @@ if (!empty($_SESSION['cart']))
                                 <div class="col-lg-8">
                                     <div class="p-5">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                                            <h1 data-cy="title-shopping" class="fw-bold mb-0 text-black">Shopping Cart</h1>
                                         </div>
                                         <hr class="my-4">
                                         <form action="cart.php" method="post">';
@@ -72,17 +72,17 @@ if (!empty($_SESSION['cart']))
                     <img src=\"{$row['item_img']}\" class=\"img-fluid rounded-3 check-img\" alt=\"Watch\">
                 </div>
                 <div class=\"col-md-3 col-lg-3 col-xl-3 check-div\">
-                    <h6 class=\"text-muted\">Watch</h6>
-                    <h6 class=\"text-black mb-0\">{$row['item_name']}</h6>
+                    <h6 class=\"text-muted\">{$row['category_name']}</h6>
+                    <h6 data-cy=\"i-{$row['item_name']}\" class=\"text-black mb-0\">{$row['item_name']}</h6>
                 </div>
                 <div class=\"col-md-3 col-lg-3 col-xl-2 check-qty\">
-                    <input class=\"check-qty\" type=\"text\" size=\"3\" name=\"qty[{$row['item_id']}]\" value=\"{$_SESSION['cart'][$row['item_id']]['quantity']}\">
+                    <input data-cy=\"q-{$row['item_name']}\" class=\"check-qty\" type=\"text\" size=\"3\" name=\"qty[{$row['item_id']}]\" value=\"{$_SESSION['cart'][$row['item_id']]['quantity']}\">
                 </div>
                 <div class=\"col-md-3 col-lg-2 col-xl-2 check-div\">
                     <h6 class=\"fst-italic mb-0\">@ {$row['item_price']}</h6>
                 </div>
                 <div class=\"col-md-3 col-lg-2 col-xl-2 check-div\">
-                    <h6 class=\"mb-0\"> &pound ".number_format ($subtotal, 2)."</h6>
+                    <h6 data-cy=\"p-{$row['item_name']}\" class=\"mb-0\"> &pound ".number_format ($subtotal, 2)."</h6>
                 </div>
             </div>";
     }
@@ -99,13 +99,13 @@ if (!empty($_SESSION['cart']))
             <div class="p-5">
                 <h3 class="fw-bold mb-2 mt-2 pt-1"> Summary</h3>
                 <hr class="my-4">
-                <h5 class="text-uppercase">Total price:  &pound '.number_format($total,2).'</h5>
+                <h5 data-cy="total-price" class="text-uppercase">Total price:  &pound '.number_format($total,2).'</h5>
                 <br>
                 <div class="check-cart">
-                    <input type="submit" name="submit" class="btn btn-dark btn-block" value="Update My Cart">
+                    <input data-cy="update" type="submit" name="submit" class="btn btn-dark btn-block" value="Update My Cart">
                 </div>
                 <div class="check-cart">
-                    <a href="checkout.php?total='.$total.'" class="btn btn-warning btn-block">CHECKOUT : &pound '.number_format($total,2).'</a>
+                    <a data-cy="checkout" href="checkout.php?total='.$total.'" class="btn btn-warning btn-block">CHECKOUT : &pound '.number_format($total,2).'</a>
                 </div>
             </div>
         </div>

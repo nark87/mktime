@@ -1,88 +1,5 @@
 /* CREATE FORM */
 
-/*.create-form-container {
-    height: 92vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background: linear-gradient(#cff1a2,#d0f4a0);
-}
-
-.create-form {
-    display: flex;
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    flex-direction: column;
-    align-items: start;
-}
-
-.create-form-title h2 {
-    font-weight: 600;
-    color:  #074d0f;
-    font-size: 40px;
-    margin-bottom: 5px;
-}
-
-.create-form-title hr {
-    border: none;
-    width: 220px;
-    height: 5px;
-    background-color: #074d0f;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.create-form-inputs {
-    width: 500px;
-    height: 50px;
-    border: none;
-    outline: none;
-    padding-left: 25px;
-    font-weight: 500;
-    color: rgb(6, 6, 6);
-    border-radius: 50px;
-}
-
-.create-form-inputs:focus {
-    border: 2px solid  #074d0f;
-}
-
-.create-form-inputs::placeholder {
-    color: #a9a9a9;
-}
-
-.create-form-inputs textarea {
-    height: 140px;
-    padding-top: 15px;
-    border-radius: 20px;
-}
-
-.create-right img {
-    width: 500px;
-}*/
-
-/* Button container */
-/*.button-create-container {
-    display: flex;
-}
-
-.button-create {
-    margin-right: 20px;
-    margin-left: 20px;
-}*/
-
-/* MEDIA SCREEN */
-/*@media (max-width:800px) {
-    .create-form-inputs {
-        width: 80vw;
-    }
-
-    .create-right {
-        display: none;
-    }
-}*/
-
 .create-section {
     width: 100%;
     min-height: 100vh;
@@ -93,6 +10,7 @@
     width: 100%;
     margin: auto;
     padding-top: 25px;
+    padding-bottom: 25px;
     justify-content: space-evenly;
     display: flex;
     align-items: center;
@@ -154,6 +72,7 @@
 
 .button-create {
     margin-right: 20px; 
+    display: flex;
 }
 
 /* MEDIA SCREEN */

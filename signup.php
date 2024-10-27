@@ -74,9 +74,9 @@
             $r = @mysqli_query ( $link, $q ) ;
             if ($r) { 
 
-                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                echo '<div data-cy="sign-msg" class="alert alert-success alert-dismissible fade show" role="alert">
                         You are now registered. Please go to <a class="alert-link" href="login.php">Log In</a>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <button data-cy="sign-msg-btn" type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button></div>';
 
                 # Close database connection.
@@ -90,11 +90,11 @@
                 mysqli_close( $link );
             }
         } else {
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert"><h5 class="alert-heading" id="err_msg">The following errors occurred:</h5>';
+            echo '<div data-cy="sign-alert" class="alert alert-danger alert-dismissible fade show" role="alert"><h5 data-cy="sign-alert-h5" class="alert-heading" id="err_msg">The following errors occurred:</h5>';
             foreach ( $errors as $msg )
             { echo " - $msg<br>" ; }
             echo 'Please try again or <a class="alert-link" href="login.php">Log In</a>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button data-cy="sign-alert-btn" type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span></button></div>';
             
             # Close database connection.
@@ -108,7 +108,7 @@
     <div class="signup-container">
         <div class="signup-image-content">
             <div class = "signup-title">
-                <h2>Sign Up</h2>
+                <h2 data-cy="sign-h2">Sign Up</h2>
                 <hr>
             </div>
             <img src="assets/signup.png" alt = "sign up image">
@@ -116,65 +116,28 @@
         <form action = "signup.php" method = "POST" class = "signup-right">
             
             <label for = "fName">First Name:</label>
-            <input type = "text" name = "firstName" placeholder = "Enter Your First Name" class = "signup-inputs" required
+            <input data-cy="sign-first" type = "text" name = "firstName" placeholder = "Enter Your First Name" class = "signup-inputs" required
                     value="<?php if (isset($_POST['firstName'])) echo $_POST['firstName']; ?>">
             <label for = "lName">Last Name:</label>
-            <input type = "text" name = "lastName" placeholder = "Enter Your Last Name" class = "signup-inputs" required
+            <input data-cy="sign-last" type = "text" name = "lastName" placeholder = "Enter Your Last Name" class = "signup-inputs" required
                     value="<?php if (isset($_POST['lastName'])) echo $_POST['lastName']; ?>">
             <label for = "nick">Nickname:</label>
-            <input type = "text" name = "nickname" placeholder = "Enter Your Nickname" class = "signup-inputs" required
+            <input data-cy="sign-nick" type = "text" name = "nickname" placeholder = "Enter Your Nickname" class = "signup-inputs" required
                     value="<?php if (isset($_POST['nickname'])) echo $_POST['nickname']; ?>">
             <label for = "eml">Email:</label>
-            <input type = "email" name = "email" placeholder = "Enter Your Email" class = "signup-inputs" required
+            <input data-cy="sign-email" type = "email" name = "email" placeholder = "Enter Your Email" class = "signup-inputs" required
                     value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
             <label for = "pwd1">Password:</label>
-            <input type = "password" name = "pass1" placeholder = "Enter Your Password" class = "signup-inputs" required
+            <input data-cy="sign-pass1" type = "password" name = "pass1" placeholder = "Enter Your Password" class = "signup-inputs" required
                     value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>">
             <label for = "pwd2">Password:</label>
-            <input type = "password" name = "pass2" placeholder = "Repeat Your Password" class = "signup-inputs" required
+            <input data-cy="sign-pass2" type = "password" name = "pass2" placeholder = "Repeat Your Password" class = "signup-inputs" required
                     value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>">
             <label>If you have an account, please <a href="login.php">Log In</a></label>
-            <button type = "submit">Sign Up</button> 
+            <button data-cy="sign-btn" type = "submit">Sign Up</button> 
         </form>     
     </div>
 </div>
-
-<!--<div class="signup-section">
-    <div class = "signup-title">
-        <h2>Sign Up</h2>
-        <hr>
-    </div>
-    <div class = "signup-container">
-        <div class = "signup-left"> 
-            <img src = "assets/signup.png" alt = "sign up left image">
-        </div>  
-        <form action = "signup.php" method = "POST" class = "signup-right">
-            
-            <label for = "fName">First Name:</label>
-            <input type = "text" name = "firstName" placeholder = "Enter Your First Name" class = "signup-inputs" required
-                    value="<?php if (isset($_POST['firstName'])) echo $_POST['firstName']; ?>">
-            <label for = "lName">Last Name:</label>
-            <input type = "text" name = "lastName" placeholder = "Enter Your Last Name" class = "signup-inputs" required
-                    value="<?php if (isset($_POST['lastName'])) echo $_POST['lastName']; ?>">
-            <label for = "nick">Nickname:</label>
-            <input type = "text" name = "nickname" placeholder = "Enter Your Nickname" class = "signup-inputs" required
-                    value="<?php if (isset($_POST['nickname'])) echo $_POST['nickname']; ?>">
-            <label for = "eml">Email:</label>
-            <input type = "email" name = "email" placeholder = "Enter Your Email" class = "signup-inputs" required
-                    value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
-            <label for = "pwd1">Password:</label>
-            <input type = "password" name = "pass1" placeholder = "Enter Your Password" class = "signup-inputs" required
-                    value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>">
-            <label for = "pwd2">Password:</label>
-            <input type = "password" name = "pass2" placeholder = "Repeat Your Password" class = "signup-inputs" required
-                    value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>">
-            <label>If you have an account, please <a href="login.php">Log In</a></label>
-            <button type = "submit">Sign Up</button> 
-        </form>
-        
-    </div>
-</div>-->
-
 
 <!-- Includes - Footer -->
 <?php

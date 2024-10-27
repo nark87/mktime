@@ -6,6 +6,11 @@
     background: white;
 }
 
+.cont-read {
+    margin-bottom: 20px;
+
+}
+
 .read-container ul {
     position: relative;
     margin: auto 0;

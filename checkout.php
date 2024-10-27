@@ -43,8 +43,8 @@
 
         # Display order number
         echo "<div class=\"container\">
-            <div class=\"alert alert-primary\" role=\"alert\">
-                <p>Thanks for your order. Your Order Number Is #".$order_id." <a href=\"home.php\"> Go HOME</a> </p>  
+            <div data-cy=\"msg-checkout\" class=\"alert alert-primary\" role=\"alert\">
+                <p>Thanks for your order. Your Order Number Is #".$order_id." <a data-cy=\"btn-home-checkout\" href=\"home.php\"> Go HOME</a> </p>  
             </div>
         </div>";
 
