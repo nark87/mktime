@@ -1,16 +1,16 @@
 Introduction to MKTIME: An E-Commerce Website for Watches
 
-* Project Overview
+Project Overview: 
 MKTIME is an innovative e-commerce platform focused on the watch market, developed as a final capstone project for Bootcamp CodeSpace - Software Development.
 This project showcases my skills and knowledge gained throughout the course, covering areas such as front-end development, back-end integration, database management, 
 and responsive design.
 
-* Project Purpose
+Project Purpose: 
 The goal of MKTIME is to create a streamlined and engaging online shopping experience for watch enthusiasts. 
 My website provides users with a visually appealing, easy-to-navigate interface to explore and purchase a curated selection of watches.
 From luxury brands to affordable styles, MKTIME aims to serve a wide audience, making the process of finding the perfect watch effortless and enjoyable.
 
-* Features
+Features: 
 The MKTIME platform includes a range of essential e-commerce features:
 
   - Product Catalog: Displays watches with high-quality images, detailed descriptions, and filtering options by category.
@@ -21,7 +21,7 @@ The MKTIME platform includes a range of essential e-commerce features:
     
   - Admin Dashboard: Includes tools for administrators to add new products, update products, and delete products.
 
-* Technical Stack
+Technical Stack: 
 The project leverages a range of technologies, including:
 
   - Front-End: Built using HTML, and CSS.
@@ -30,7 +30,7 @@ The project leverages a range of technologies, including:
     
   - Database: Uses MySQL (based on project requirements) to securely store product, order, and user data.
 
-* Learning Objectives
+Learning Objectives: 
 Through MKTIME, I have deepened my understanding of software development principles, e-commerce dynamics, and full-stack development.
 This project also allowed me to practice essential skills like version control, and problem-solving—qualities that are vital in the software development industry.
 
