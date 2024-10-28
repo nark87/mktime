@@ -143,8 +143,8 @@
                 placeholder = "Enter the item id" 
                 required
                 readonly
-                value = "<?php if (isset($_POST['item_id']))
-                    {  echo $_POST['item_id']; } else { echo $a_item['id'];}?>">
+                value = "<?php if (isset($_POST['item_id']))  // If it comes from POST
+                    {  echo $_POST['item_id']; } else { echo $a_item['id'];} // It comes from GET?>">
         
             <!-- Input box for Item name  -->
             <label for = "name">Name:</label>
@@ -154,8 +154,8 @@
                 id="item_name"
                 placeholder = "Enter the item name" 
                 required 
-                value = "<?php if (isset($_POST['item_name']))
-                    {  echo $_POST['item_name']; } else { echo $a_item['name'];}?>">
+                value = "<?php if (isset($_POST['item_name']))  // If it comes from POST
+                    {  echo $_POST['item_name']; } else { echo $a_item['name'];} // It comes from GET?>">
             
             <!-- Input box for Item Description -->  
             <label for = "description">Description:</label>
@@ -165,8 +165,8 @@
                 id="item_desc"
                 text-align = "center"
                 placeholder = "Enter the item description"
-                required><?php if (isset($_POST['item_desc']))
-                    {  echo $_POST['item_desc']; } else { echo $a_item['desc'];}?></textarea>
+                required><?php if (isset($_POST['item_desc']))  // If it comes from POST
+                    {  echo $_POST['item_desc']; } else { echo $a_item['desc'];} // It comes from GET?></textarea>
             
             <!-- Input box for Image Path -->
             <label for = "image">Image Path:</label>
@@ -176,16 +176,30 @@
                 id="item_img"
                 placeholder = "Enter the image path"
                 required 
-                value = "<?php if (isset($_POST['item_img']))
-                    {  echo $_POST['item_img']; } else { echo $a_item['img'];}?>">
+                value = "<?php if (isset($_POST['item_img']))  // If it comes from POST
+                    {  echo $_POST['item_img']; } else { echo $a_item['img'];} // It comes from GET?>">
             
             <!-- Input box for Category -->
             <label for = "categor">Category:</label>
             <div>
                 <select name="selectcategory" class="form-control update-inputs">
                     <?php
-                        while ( $row = mysqli_fetch_array( $rC, MYSQLI_ASSOC )){
-                            echo '<option name="'.$row['category_id'].'" id="categ" value="'.$row['category_id'].'">'.$row['category_name'].'</option>';
+                        if (isset($_POST['selectcategory'])) { // If it comes from POST
+                            while ( $row = mysqli_fetch_array( $rC, MYSQLI_ASSOC )){
+                                if ($row['category_id'] == $_POST['selectcategory']){
+                                    echo '<option name="'.$row['category_id'].'" id="categ" value="'.$row['category_id'].'" selected>'.$row['category_name'].'</option>';
+                                } else {
+                                    echo '<option name="'.$row['category_id'].'" id="categ" value="'.$row['category_id'].'">'.$row['category_name'].'</option>';
+                                }
+                            }
+                        } else { // It comes from GET
+                            while ( $row = mysqli_fetch_array( $rC, MYSQLI_ASSOC )){
+                                if ($row['category_id'] == $a_item['cat_num']){
+                                    echo '<option name="'.$row['category_id'].'" id="categ" value="'.$row['category_id'].'" selected>'.$row['category_name'].'</option>';
+                                } else {
+                                    echo '<option name="'.$row['category_id'].'" id="categ" value="'.$row['category_id'].'">'.$row['category_name'].'</option>';
+                                }
+                            }
                         } ?>
                     </select>
             </div>
@@ -200,13 +214,13 @@
                 min = "0" step = "0.01"
                 placeholder = "Enter the item price"
                 required 
-                value = "<?php if (isset($_POST['item_price']))
-                    {  echo $_POST['item_price']; } else { echo $a_item['price'];}?>"><br>
+                value = "<?php if (isset($_POST['item_price']))  // If it comes from POST
+                    {  echo $_POST['item_price']; } else { echo $a_item['price'];} // It comes from GET?>"><br>
         </div>
         <div class="update-image-content">
             <div class="update-image-content bg-image">
-                <img src="../<?php if (isset($_POST['item_img']))
-                    {  echo $_POST['item_img']; } else { echo $a_item['img'];}?>"/>
+                <img src="../<?php if (isset($_POST['item_img']))  // If it comes from POST
+                    {  echo $_POST['item_img']; } else { echo $a_item['img'];} // It comes from GET?>"/>
                 <div class="mask" style="background-color: rgba(0, 0, 0, 0.5)">
                     <div class="text">
                         <p>Update Item</p>

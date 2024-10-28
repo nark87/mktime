@@ -59,13 +59,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="read.php">Read Items</a>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="update.php">Update Item</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="delete.php">Delete Item</a>
-            </li>-->
             </ul>
+        </div>
+        <div>
+            <form class="form-inline my-2 my-lg-0 pr-3" action = "admin.php" method = "post">
+                <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search product" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
         <div>
         <button class="btn btn-outline-primary" type="submit" onclick="location.href = '../logout.php';">Log Out</button>

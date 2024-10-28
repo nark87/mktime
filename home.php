@@ -20,22 +20,34 @@
 
     if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
 
-        $ca = mysqli_real_escape_string( $link, trim( $_POST[ 'selectcategory' ] ) ) ;
+        if (isset($_POST['search'])) {
 
-        if ($ca == 'all') {
+            $sech = mysqli_real_escape_string( $link, trim( $_POST[ 'search' ] ) ) ;
+
             # Retrieve selected category from 'view_items' database table.
-            $q = "SELECT * FROM view_items, view_category_item WHERE view_category_item.category_id = view_items.category_id";
+            $q = "SELECT * FROM view_items, view_category_item WHERE 
+            (view_items.item_desc LIKE '%$sech%' OR view_items.item_name LIKE '%$sech%') 
+            AND view_category_item.category_id = view_items.category_id";
+
             $r = mysqli_query( $link, $q );
             $h3Category = "All Categories";
+
         } else {
-            # Retrieve selected category from 'view_items' database table.
-            $q = "SELECT * FROM view_items, view_category_item WHERE view_category_item.category_id = view_items.category_id
-                AND view_category_item.category_name = '$ca'";
-            $r = mysqli_query( $link, $q );
-            $h3Category = $ca;
+            $ca = mysqli_real_escape_string( $link, trim( $_POST[ 'selectcategory' ] ) ) ;
+
+            if ($ca == 'all') {
+                # Retrieve selected category from 'view_items' database table.
+                $q = "SELECT * FROM view_items, view_category_item WHERE view_category_item.category_id = view_items.category_id";
+                $r = mysqli_query( $link, $q );
+                $h3Category = "All Categories";
+            } else {
+                # Retrieve selected category from 'view_items' database table.
+                $q = "SELECT * FROM view_items, view_category_item WHERE view_category_item.category_id = view_items.category_id
+                    AND view_category_item.category_name = '$ca'";
+                $r = mysqli_query( $link, $q );
+                $h3Category = $ca;
+            }
         }
-
-
     } else {
 
         # Retrieve all items from 'view_items' database table.
