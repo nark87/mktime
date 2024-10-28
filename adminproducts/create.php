@@ -46,6 +46,40 @@
             $img = mysqli_real_escape_string( $link, trim( $_POST[ 'item_img' ] ) ) ;
         }
 
+        # Check for a file image.
+        # Uploaded img and save in img folder
+        $target_dir = "/var/www/app/mktime/img/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        echo $check;
+
+        if($check !== false) {
+            $uploadOk = 1;
+        } else {
+            $errors[] = "File is not an image.";
+            $uploadOk = 0;
+        }
+
+        # Check if file already exists
+        if (file_exists($target_file)) {
+            $errors[] = "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+            } else {
+            echo "Sorry, there was an error uploading your file.";
+            }
+        }
+
         # Check for a item category.
         if (empty( $_POST[ 'selectcategory' ] ) ) {
             $errors[] = 'Enter the item category.' ;
@@ -66,6 +100,7 @@
         if ( empty( $errors ) ) {
             $q = "INSERT INTO view_items (item_name, item_desc, item_img, item_price, category_id) 
             VALUES ('$n','$d', '$img', '$p', '$c' )";
+
             $r = @mysqli_query ( $link, $q ) ;
             
             if ($r) {
@@ -97,7 +132,7 @@
 <!-- Container -->
 <div class="create-section">
     <div class="create-container">
-        <form action = "create.php" method = "post" class = "create-left"> 
+        <form action = "create.php" method = "post" class = "create-left" enctype="multipart/form-data"> 
             <div class = "create-left-title">
                 <h2>Create Item</h2>
                 <hr>
@@ -129,6 +164,15 @@
                 placeholder = "Enter the image path"
                 required 
                 value = "">
+
+            <!-- Input box for File Image -->
+            <label for="formFile" class="form-label">Add Image Product:</label>
+            <input 
+                class="form-control create-inputs" 
+                type="file" 
+                name="fileToUpload" 
+                id="fileToUpload"
+                required>
 
             <!-- Input box for Category -->
             <label for = "categor">Category:</label>
